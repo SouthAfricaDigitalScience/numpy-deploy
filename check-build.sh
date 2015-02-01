@@ -1,6 +1,8 @@
 module load ci
 module load python
-module load lapack
+module add gcc/4.8.2
+module add lapack
+echo $LD_LIBRARY_PATH
 echo ""
 cd $WORKSPACE/$NAME-$VERSION
 python setup.py check

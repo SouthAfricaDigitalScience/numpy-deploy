@@ -3,6 +3,10 @@ SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
 module load python
+module add gcc/4.8.2
+module add lapack
+
+echo $LD_LIBRARY_PATH
 
 echo "REPO_DIR is "
 echo $REPO_DIR
