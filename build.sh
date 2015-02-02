@@ -47,8 +47,8 @@ cat << EOF > site.cfg
 [DEFAULT]
 libraries = fftw3,lapack,blas
 
-library_dirs = ${FFTW_DIR}/lib:${LAPACK_DIR}/lib
-include_dirs = ${FFTW_DIR}/include
+library_dirs = ${FFTW3_DIR}/lib:${LAPACK_DIR}/lib
+include_dirs = ${FFTW3_DIR}/include
 search_static_first = true
 EOF
 
