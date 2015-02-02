@@ -4,6 +4,7 @@ SOURCE_FILE=$NAME-$VERSION.tar.gz
 module load ci
 module load python
 module add gcc/4.8.2
+module add fftw3/3.3.4
 module add lapack
 
 echo $LD_LIBRARY_PATH
