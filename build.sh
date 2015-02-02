@@ -13,6 +13,7 @@ ls $LAPACK_DIR/lib
 # according to: http://www.scipy.org/scipylib/building/linux.html
 export LAPACK="$LAPACK_DIR/lib/liblapack.so"
 export BLAS="$LAPACK_DIR/lib/libblas.so"
+export FFTW3="$FFTW3_DIR/lib/libfftw3.so"
 
 
 echo "REPO_DIR is "
@@ -39,6 +40,17 @@ else
 fi
 tar -xzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 cd $WORKSPACE/$NAME-$VERSION
-cp ../site.cfg .
+
+# We have to generate the site.cfg file by hand on the fly
+cat << EOF > site.cfg
+[DEFAULT]
+libraries = fftw3,lapack,blas
+
+library_dirs = ${FFTW_DIR}/lib:${LAPACK_DIR}/lib
+include_dirs = ${FFTW_DIR}/include
+search_static_first = true
+EOF
+
+
 export LAPACK_SRC=$LAPACK_DIR/
 python setup.py build
