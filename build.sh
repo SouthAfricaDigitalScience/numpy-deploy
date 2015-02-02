@@ -32,4 +32,5 @@ else
 fi
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 cd $WORKSPACE/$NAME-$VERSION
+cp ../site.cfg .
 python setup.py build
