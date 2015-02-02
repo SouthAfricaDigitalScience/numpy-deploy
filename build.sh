@@ -10,6 +10,11 @@ echo $LD_LIBRARY_PATH
 echo $LAPACK_DIR
 ls $LAPACK_DIR/lib
 
+# according to: http://www.scipy.org/scipylib/building/linux.html
+export LAPACK="$LAPACK_DIR/lib/liblapack.so"
+export BLAS="$LAPACK_DIR/lib/libblas.so"
+
+
 echo "REPO_DIR is "
 echo $REPO_DIR
 echo "SRC_DIR is "
