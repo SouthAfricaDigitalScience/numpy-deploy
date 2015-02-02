@@ -7,6 +7,8 @@ module add gcc/4.8.2
 module add lapack
 
 echo $LD_LIBRARY_PATH
+echo $LAPACK_DIR
+ls $LAPACK_DIR/lib
 
 echo "REPO_DIR is "
 echo $REPO_DIR
@@ -30,7 +32,8 @@ if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
 else
   echo "continuing from previous builds, using source at " $SRC_DIR/$SOURCE_FILE
 fi
-tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
+tar -xzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 cd $WORKSPACE/$NAME-$VERSION
 cp ../site.cfg .
+export LAPACK_SRC=$LAPACK_DIR/
 python setup.py build
