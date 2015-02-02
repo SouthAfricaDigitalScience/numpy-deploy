@@ -2,6 +2,8 @@ module load ci
 module load python
 module add gcc/4.8.2
 module add lapack
+module add fftw3/3.3.4
+
 echo $LD_LIBRARY_PATH
 echo ""
 cd $WORKSPACE/$NAME-$VERSION
