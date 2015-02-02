@@ -41,7 +41,7 @@ else
 fi
 tar -xzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 cd $WORKSPACE/$NAME-$VERSION
-
+rm -rf build/
 # We have to generate the site.cfg file by hand on the fly
 cat << EOF > site.cfg
 [DEFAULT]
