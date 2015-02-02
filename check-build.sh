@@ -31,7 +31,7 @@ module-whatis   "$NAME $VERSION."
 setenv       NUMPY_VERSION       $VERSION
 setenv       NUMPY_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(NUMPY_DIR)/lib
-prepend-path PYTHONPATH   $::env(NUMPY_DIR)
+prepend-path PYTHONPATH   $::env(NUMPY_DIR)/lib64/python2.6/site-packages
 MODULE_FILE
 ) > modules/$VERSION
 
