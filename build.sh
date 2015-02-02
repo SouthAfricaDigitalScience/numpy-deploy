@@ -4,17 +4,19 @@ SOURCE_FILE=$NAME-$VERSION.tar.gz
 module load ci
 module load python
 module add gcc/4.8.2
-module add fftw3/3.3.4
+module add fftw/3.3.4
 module add lapack
 
 echo $LD_LIBRARY_PATH
 echo $LAPACK_DIR
+echo $FFTW_DIR
+ls $FFTW_DIR/lib
 ls $LAPACK_DIR/lib
 
 # according to: http://www.scipy.org/scipylib/building/linux.html
 export LAPACK="$LAPACK_DIR/lib/liblapack.so"
 export BLAS="$LAPACK_DIR/lib/libblas.so"
-export FFTW3="$FFTW3_DIR/lib/libfftw3.so"
+export FFTW3="$FFTW_DIR/lib/libfftw3.so"
 
 
 echo "REPO_DIR is "
@@ -47,8 +49,8 @@ cat << EOF > site.cfg
 [DEFAULT]
 libraries = fftw3,lapack,blas
 
-library_dirs = ${FFTW3_DIR}/lib:${LAPACK_DIR}/lib
-include_dirs = ${FFTW3_DIR}/include
+library_dirs = ${FFTW_DIR}/lib:${LAPACK_DIR}/lib
+include_dirs = ${FFTW_DIR}/include
 search_static_first = true
 EOF
 
