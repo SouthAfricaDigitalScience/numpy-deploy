@@ -2,10 +2,10 @@
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
-module load python
 module add gcc/4.8.2
 module add fftw/3.3.4
 module add lapack
+module add python/2.7.9
 
 echo $LD_LIBRARY_PATH
 echo $LAPACK_DIR
@@ -48,7 +48,6 @@ rm -rf build/
 cat << EOF > site.cfg
 [DEFAULT]
 libraries = fftw3,lapack,blas
-
 library_dirs = ${FFTW_DIR}/lib:${LAPACK_DIR}/lib
 include_dirs = ${FFTW_DIR}/include
 search_static_first = true
