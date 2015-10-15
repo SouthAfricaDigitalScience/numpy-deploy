@@ -1,8 +1,11 @@
+#!/bin/bash
+source /usr/share/modules/init/bash
+
 module load ci
 module load python/2.7.9
 module add gcc/4.8.2
 module add lapack
-module add fftw3/3.3.4
+module add fftw/3.3.4
 VERSION_MAJOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
 echo $LD_LIBRARY_PATH
 echo ""
