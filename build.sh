@@ -42,7 +42,7 @@ if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
 else
   echo "continuing from previous builds, using source at " $SRC_DIR/$SOURCE_FILE
 fi
-tar -xzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
+tar -xz --keep-newer-files -f $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 cd $WORKSPACE/$NAME-$VERSION
 rm -rf build/
 # We have to generate the site.cfg file by hand on the fly
