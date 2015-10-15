@@ -16,7 +16,7 @@ echo $?
 if [ $? != 0 ] ; then
   exit 1
 fi
-
+export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MAJOR}/site-packages/
 python setup.py install --prefix=$SOFT_DIR
 
 mkdir -p modules
