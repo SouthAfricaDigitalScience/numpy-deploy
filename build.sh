@@ -56,5 +56,4 @@ EOF
 
 
 export LAPACK_SRC=$LAPACK_DIR/
-#python setup.py build
-pip install -t $PYTHONPATH
+python setup.py build
