@@ -6,7 +6,7 @@ module load ci
 module add gcc/4.8.2
 module add fftw/3.3.4
 module add atlas
-module add python/2.7.9
+module add python/${PYTHON_VERSION}
 
 echo $LD_LIBRARY_PATH
 echo $LAPACK_DIR
@@ -56,4 +56,5 @@ EOF
 
 
 export LAPACK_SRC=$LAPACK_DIR/
-python setup.py build
+#python setup.py build
+pip install -t $PYTHONPATH
