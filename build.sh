@@ -5,7 +5,7 @@ SOURCE_FILE=$NAME-$VERSION.tar.gz
 module load ci
 module add fftw/3.3.4-gcc-5.1.0-mpi-1.8.8
 module add lapack
-module add python/${PYTHON_VERSION}
+#module add python/${PYTHON_VERSION}
 
 echo $LD_LIBRARY_PATH
 echo $LAPACK_DIR
