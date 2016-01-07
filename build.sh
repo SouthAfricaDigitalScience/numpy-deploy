@@ -3,9 +3,8 @@ source /usr/share/modules/init/bash
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
-module add gcc/4.8.2
-module add fftw/3.3.4
-module add atlas
+module add fftw/3.3.4-gcc-5.1.0-mpi-1.8.8
+module add lapack
 module add python/${PYTHON_VERSION}
 
 echo $LD_LIBRARY_PATH
@@ -38,7 +37,7 @@ mkdir -p $SOFT_DIR
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
   echo "seems like this is the first build - let's get the source"
   mkdir -p $SRC_DIR
-  wget http://mirror.ufs.ac.za/numpy/NumPy/$VERSION/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+  wget http://downloads.sourceforge.net/project/numpy/NumPy/${VERSION}/${SOURCE_FILE} -O $SRC_DIR/$SOURCE_FILE
 else
   echo "continuing from previous builds, using source at " $SRC_DIR/$SOURCE_FILE
 fi
