@@ -12,7 +12,7 @@ export VERSION_MINOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
 echo $LD_LIBRARY_PATH
 echo ""
 cd $WORKSPACE/$NAME-$VERSION
-python${VERSION_MINOR} setup.py check
+python${VERSION_MINOR} setup.py test
 
 echo $?
 if [ $? != 0 ] ; then
