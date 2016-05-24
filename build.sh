@@ -16,6 +16,7 @@ mkdir -p $SOFT_DIR
 #  Download the source file
 
 if [ ! -e ${SRC_DIR}/${SOURCE_FILE}.lock ] && [ ! -s ${SRC_DIR}/${SOURCE_FILE} ] ; then
+  touch ${SRC_DIR}/${SOURCE_FILE}.lock
   echo "seems like this is the first build - let's get the source"
   mkdir -p $SRC_DIR
   wget http://downloads.sourceforge.net/project/numpy/NumPy/${VERSION}/${SOURCE_FILE} -O $SRC_DIR/$SOURCE_FILE
