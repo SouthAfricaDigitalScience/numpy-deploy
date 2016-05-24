@@ -19,7 +19,7 @@ if [ $? != 0 ] ; then
   exit 1
 fi
 export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
-python${VERSION_INOR} setup.py install --prefix=$SOFT_DIR
+python${VERSION_MINOR} setup.py install --prefix=$SOFT_DIR
 
 mkdir -p modules
 (
