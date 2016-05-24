@@ -35,4 +35,4 @@ tar -xz --keep-newer-files -f ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE}
 # we keep a site.cfg in change control.
 cp site.cfg ${WORKSPACE}/${NAME}-${VERSION}
 cd ${WORKSPACE}/${NAME}-${VERSION}
-python${VERSION_MINOR} setup.py build -j2
+python${VERSION_MINOR} setup.py build

@@ -15,7 +15,7 @@ cd $WORKSPACE/$NAME-$VERSION
 python${VERSION_MINOR} setup.py clean
 
 export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
-python${VERSION_MAJOR} setup.py install -j2 --prefix=${SOFT_DIR}
+python${VERSION_MAJOR} setup.py install --prefix=${SOFT_DIR}
 
 mkdir -p modules
 (
