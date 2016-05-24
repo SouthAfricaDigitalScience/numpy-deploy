@@ -6,8 +6,8 @@ module add ci
 module add gcc/${GCC_VERSION}
 module add openblas/0.2.15-gcc-${GCC_VERSION}
 module add python/${PYTHON_VERSION}-gcc-${GCC_VERSION}
-VERSION_MAJOR=${PYTHON_VERSION:0:1} # Should be 2.7 or 3.4 or similar
-VERSION_MINOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
+export VERSION_MAJOR=${PYTHON_VERSION:0:1} # Should be 2.7 or 3.4 or similar
+export VERSION_MINOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
 
 mkdir -p $WORKSPACE
 mkdir -p $SRC_DIR
@@ -35,4 +35,4 @@ tar -xz --keep-newer-files -f ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE}
 # we keep a site.cfg in change control.
 cp site.cfg ${WORKSPACE}/${NAME}-${VERSION}
 cd ${WORKSPACE}/${NAME}-${VERSION}
-python${VERSION_MAJOR} setup.py build --inplace -j2
+python${VERSION_MINOR} setup.py build -j2

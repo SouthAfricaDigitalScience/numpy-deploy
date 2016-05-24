@@ -12,7 +12,7 @@ VERSION_MINOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
 echo $LD_LIBRARY_PATH
 echo ""
 cd $WORKSPACE/$NAME-$VERSION
-python${VERSION_MAJOR} setup.py clean
+python${VERSION_MINOR} setup.py clean
 
 export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
 python${VERSION_MAJOR} setup.py install -j2 --prefix=${SOFT_DIR}
@@ -34,12 +34,12 @@ setenv       NUMPY_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::en
 prepend-path LD_LIBRARY_PATH     $::env(NUMPY_DIR)/lib
 prepend-path PYTHONPATH          $::env(NUMPY_DIR)/lib/python${VERSION_MINOR}/site-packages
 MODULE_FILE
-) > modules/$VERSION-gcc-${GCC_VERSION}
+) > modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
 mkdir -p $LIBRARIES_MODULES/$NAME
-cp modules/$VERSION $LIBRARIES_MODULES/$NAME
+cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES_MODULES/${NAME}
 
 ##  check the numpy module load
 
 ## run numpy full test suite (needs nose)
-python -c 'import numpy; numpy.test()'
+python${VERSION_MINOR} -c 'import numpy; numpy.test()'
