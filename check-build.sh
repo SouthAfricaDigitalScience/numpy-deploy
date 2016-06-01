@@ -43,6 +43,9 @@ MODULE_FILE
 mkdir -p $LIBRARIES_MODULES/$NAME
 cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES_MODULES/$NAME
 echo "module inserted"
+echo "checking availability"
+module avail $NAME
+module add ${NAME}/${VERSION}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 ##  check the numpy module load
 echo "running test"
 ## run numpy full test suite (needs nose)
