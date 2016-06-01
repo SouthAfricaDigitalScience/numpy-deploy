@@ -18,8 +18,8 @@ echo $?
 if [ $? != 0 ] ; then
   exit 1
 fi
-export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
-python${VERSION_MINOR} setup.py install --prefix=$SOFT_DIR
+# export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
+python${VERSION_MINOR} setup.py install --prefix=${PYTHON_DIR}
 echo "making module"
 mkdir -p modules
 (
@@ -35,8 +35,8 @@ proc ModulesHelp { } {
 module-whatis   "$NAME $VERSION."
 setenv       NUMPY_VERSION       $VERSION
 setenv       NUMPY_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path LD_LIBRARY_PATH   $::env(NUMPY_DIR)/lib
-prepend-path PYTHONPATH       $::env(NUMPY_DIR)/lib/python${VERSION_MINOR}/site-packages
+#prepend-path LD_LIBRARY_PATH   $::env(NUMPY_DIR)/lib
+#prepend-path PYTHONPATH       $::env(NUMPY_DIR)/lib/python${VERSION_MINOR}/site-packages
 MODULE_FILE
 ) > modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
@@ -45,7 +45,10 @@ cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES_MODUL
 echo "module inserted"
 echo "checking availability"
 module avail $NAME
+module add python${}
 module add ${NAME}/${VERSION}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
+echo "how has pythonpath changed ?"
+echo $PYTHONPATH
 ##  check the numpy module load
 echo "running test"
 ## run numpy full test suite (needs nose)
