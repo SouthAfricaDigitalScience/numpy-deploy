@@ -45,7 +45,6 @@ cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES_MODUL
 echo "module inserted"
 echo "checking availability"
 module avail $NAME
-module add python${}
 module add ${NAME}/${VERSION}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 echo "how has pythonpath changed ?"
 echo $PYTHONPATH
