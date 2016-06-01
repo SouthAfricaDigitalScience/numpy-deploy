@@ -47,4 +47,4 @@ echo "module inserted"
 echo "running test"
 ## run numpy full test suite (needs nose)
 cd /tmp
-python${VERSION_MINOR} -c 'import numpy; numpy.test()'
+python${VERSION_MINOR} -c 'import numpy; numpy.version()'
