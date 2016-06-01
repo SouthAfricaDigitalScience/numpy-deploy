@@ -20,7 +20,7 @@ if [ $? != 0 ] ; then
 fi
 export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
 python${VERSION_MINOR} setup.py install --prefix=$SOFT_DIR
-
+echo "making module"
 mkdir -p modules
 (
 cat <<MODULE_FILE
@@ -42,8 +42,9 @@ MODULE_FILE
 
 mkdir -p $LIBRARIES_MODULES/$NAME
 cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES_MODULES/$NAME
-
+echo "module inserted"
 ##  check the numpy module load
-
+echo "running test"
 ## run numpy full test suite (needs nose)
+cd /tmp
 python${VERSION_MINOR} -c 'import numpy; numpy.test()'
