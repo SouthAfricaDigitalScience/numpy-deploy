@@ -5,7 +5,9 @@ SOURCE_FILE=$NAME-$VERSION.tar.gz
 module add deploy
 module add gcc/${GCC_VERSION}
 module add openblas/0.2.15-gcc-${GCC_VERSION}
+module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-1.8.8
 module add python/${PYTHON_VERSION}-gcc-${GCC_VERSION}
+module add openssl/1.0.2g
 
 VERSION_MAJOR=${PYTHON_VERSION:0:1} # Should be 2.7 or 3.4 or similar
 VERSION_MINOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
@@ -13,6 +15,24 @@ echo $LD_LIBRARY_PATH
 echo ""
 cd $WORKSPACE/$NAME-$VERSION
 python${VERSION_MINOR} setup.py clean
+(
+cat <<SITECFG
+[DEFAULT]
+library_dirs = ${OPENBLAS_DIR}/lib
+include_dirs = ${OPENBLAS_DIR}/include/
+ATLAS=none
+BLAS=${OPENBLAS_DIR}/lib/libopenblas.so
+LAPACK=${OPENBLAS_DIR}/lib/libopenblas.so
+[openblas]
+libraries = openblas
+runtime_library_dirs = ${OPENBLAS_DIR}/lib/
+
+[fft]
+libraries = fftw3
+library_dirs = ${FFTW_DIR}/lib/
+include_dirs = ${FFTW_DIR}/include/
+SITECFG
+) > ${NAME}-${VERSION}/site.cfg
 
 export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
 python${VERSION_MAJOR} setup.py install --prefix=${SOFT_DIR}

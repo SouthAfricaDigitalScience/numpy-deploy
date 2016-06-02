@@ -7,6 +7,7 @@ module add gcc/${GCC_VERSION}
 module add openblas/0.2.15-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-1.8.8
 module add python/${PYTHON_VERSION}-gcc-${GCC_VERSION}
+module add openssl/1.0.2g
 export VERSION_MAJOR=${PYTHON_VERSION:0:1} # Should be 2.7 or 3.4 or similar
 export VERSION_MINOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
 
@@ -57,4 +58,5 @@ include_dirs = ${FFTW_DIR}/include/
 SITECFG
 ) > ${NAME}-${VERSION}/site.cfg
 cd ${WORKSPACE}/${NAME}-${VERSION}
-python${VERSION_MINOR} setup.py build
+# Follow instructions at http://docs.scipy.org/doc/numpy-1.10.1/user/install.html#linux
+python${VERSION_MINOR} setup.py build-ext --inplace
