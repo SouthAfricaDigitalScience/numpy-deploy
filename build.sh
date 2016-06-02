@@ -54,8 +54,7 @@ runtime_library_dirs = ${OPENBLAS_DIR}/lib/
 libraries = fftw3
 library_dirs = ${FFTW_DIR}/lib/
 include_dirs = ${FFTW_DIR}/include/
-
+SITECFG
+) > ${NAME}-${VERSION}/site.cfg
 cd ${WORKSPACE}/${NAME}-${VERSION}
 python${VERSION_MINOR} setup.py build
-SITECFG
-) >site.cfg
