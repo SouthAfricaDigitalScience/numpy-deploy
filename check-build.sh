@@ -21,6 +21,7 @@ if [ $? != 0 ] ; then
   exit 1
 fi
 # export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
+export LDFLAGS=$LDFLAGS:"-shared"
 python${VERSION_MINOR} setup.py install --prefix=${PYTHON_DIR}
 echo "making module"
 mkdir -p modules

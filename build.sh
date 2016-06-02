@@ -58,5 +58,10 @@ include_dirs = ${FFTW_DIR}/include/
 SITECFG
 ) > ${NAME}-${VERSION}/site.cfg
 cd ${WORKSPACE}/${NAME}-${VERSION}
+# See https://github.com/Homebrew/homebrew-python/commit/d94eceddbbaace19fb95ebc0d6e484b1942b7c29
+# and https://github.com/Homebrew/homebrew-python/issues/209
+export LDFLAGS=$LDFLAGS:"-shared"
+
 # Follow instructions at http://docs.scipy.org/doc/numpy-1.10.1/user/install.html#linux
+
 python${VERSION_MINOR} setup.py build_ext --inplace
