@@ -60,7 +60,7 @@ SITECFG
 cd ${WORKSPACE}/${NAME}-${VERSION}
 # See https://github.com/Homebrew/homebrew-python/commit/d94eceddbbaace19fb95ebc0d6e484b1942b7c29
 # and https://github.com/Homebrew/homebrew-python/issues/209
-export LDFLAGS=$LDFLAGS:"-shared"
+export LDFLAGS="$LDFLAGS -shared"
 
 # Follow instructions at http://docs.scipy.org/doc/numpy-1.10.1/user/install.html#linux
 

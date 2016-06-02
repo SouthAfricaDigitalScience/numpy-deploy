@@ -35,7 +35,7 @@ SITECFG
 ) > ${NAME}-${VERSION}/site.cfg
 
 export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
-export LDFLAGS=$LDFLAGS:"-shared"
+export LDFLAGS="$LDFLAGS -shared"
 python${VERSION_MAJOR} setup.py install --prefix=${SOFT_DIR}
 
 mkdir -p modules
