@@ -32,7 +32,7 @@ libraries = fftw3
 library_dirs = ${FFTW_DIR}/lib/
 include_dirs = ${FFTW_DIR}/include/
 SITECFG
-) > ${NAME}-${VERSION}/site.cfg
+) > site.cfg
 
 export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
 export LDFLAGS="$LDFLAGS -shared"
