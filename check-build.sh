@@ -20,6 +20,9 @@ echo $?
 if [ $? != 0 ] ; then
   exit 1
 fi
+#ImportError: Need nose >= 0.10.0 for tests - see http://somethingaboutorange.com/mrl/projects/nose
+echo "we need nose"
+pip install --user nose
 # export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
 export LDFLAGS="$LDFLAGS -shared"
 python${VERSION_MINOR} setup.py install --prefix=${PYTHON_DIR}
