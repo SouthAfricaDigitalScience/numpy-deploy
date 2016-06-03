@@ -14,7 +14,7 @@ VERSION_MINOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
 echo $LD_LIBRARY_PATH
 echo ""
 cd $WORKSPACE/$NAME-$VERSION
-python${VERSION_MINOR} setup.py clean
+#python${VERSION_MINOR} setup.py clean
 (
 cat <<SITECFG
 [DEFAULT]
