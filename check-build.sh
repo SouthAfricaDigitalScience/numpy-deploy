@@ -16,10 +16,6 @@ echo ""
 cd $WORKSPACE/$NAME-$VERSION
 #python${VERSION_MINOR} setup.py test
 
-echo $?
-if [ $? != 0 ] ; then
-  exit 1
-fi
 #ImportError: Need nose >= 0.10.0 for tests - see http://somethingaboutorange.com/mrl/projects/nose
 echo "we need nose"
 which pip${VERSION_MINOR}
