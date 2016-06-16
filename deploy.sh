@@ -34,7 +34,6 @@ include_dirs = ${FFTW_DIR}/include/
 SITECFG
 ) > site.cfg
 
-export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
 export LDFLAGS="$LDFLAGS -shared"
 python${VERSION_MAJOR} setup.py install --prefix=${SOFT_DIR}
 
