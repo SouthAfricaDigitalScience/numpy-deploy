@@ -18,7 +18,9 @@ cd $WORKSPACE/$NAME-$VERSION
 
 #ImportError: Need nose >= 0.10.0 for tests - see http://somethingaboutorange.com/mrl/projects/nose
 echo "we need nose"
+echo "looking for pip"
 which pip${VERSION_MINOR}
+echo "runing pip install nose"
 pip${VERSION_MINOR} install --user nose
 # export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
 export LDFLAGS="$LDFLAGS -shared"
@@ -55,4 +57,4 @@ echo $PYTHONPATH
 echo "running test"
 ## run numpy full test suite (needs nose)
 cd /tmp
-python${VERSION_MINOR} -c 'import numpy; numpy.version'
+python${VERSION_MINOR} -c 'import numpy; numpy.version.version; numpy.test()'
