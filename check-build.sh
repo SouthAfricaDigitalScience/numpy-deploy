@@ -4,10 +4,10 @@ SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module add ci
 module add gcc/${GCC_VERSION}
-module add openblas/0.2.15-gcc-${GCC_VERSION}
+module add openblas/0.2.19-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-1.8.8
 module add python/${PYTHON_VERSION}-gcc-${GCC_VERSION}
-module add openssl/1.0.2g
+module add openssl/1.0.2j
 
 export VERSION_MAJOR=${PYTHON_VERSION:0:1} # Should be 2 or 3
 export VERSION_MINOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
@@ -16,15 +16,9 @@ echo ""
 cd $WORKSPACE/$NAME-$VERSION
 #python${VERSION_MINOR} setup.py test
 
-#ImportError: Need nose >= 0.10.0 for tests - see http://somethingaboutorange.com/mrl/projects/nose
-echo "we need nose"
-echo "looking for pip"
-which pip${VERSION_MINOR}
-echo "runing pip install nose"
-pip${VERSION_MINOR} install --user nose
 # export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
 export LDFLAGS="$LDFLAGS -shared"
-python${VERSION_MINOR} setup.py install --prefix=${PYTHON_DIR}
+python${VERSION_MINOR} setup.py install
 echo "making module"
 mkdir -p modules
 (
@@ -39,7 +33,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       NUMPY_VERSION       $VERSION
-setenv       NUMPY_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       NUMPY_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 #prepend-path LD_LIBRARY_PATH   $::env(NUMPY_DIR)/lib
 #prepend-path PYTHONPATH       $::env(NUMPY_DIR)/lib/python${VERSION_MINOR}/site-packages
 MODULE_FILE

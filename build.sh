@@ -1,13 +1,13 @@
 #!/bin/bash -e
 . /etc/profile.d/modules.sh
-SOURCE_FILE=$NAME-$VERSION.tar.gz
+SOURCE_FILE=v${VERSION}.tar.gz
 
 module add ci
 module add gcc/${GCC_VERSION}
-module add openblas/0.2.15-gcc-${GCC_VERSION}
+module add openblas/0.2.19-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-1.8.8
 module add python/${PYTHON_VERSION}-gcc-${GCC_VERSION}
-module add openssl/1.0.2g
+module add openssl/1.0.2j
 export VERSION_MAJOR=${PYTHON_VERSION:0:1} # Should be 2.7 or 3.4 or similar
 export VERSION_MINOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
 
@@ -21,7 +21,7 @@ if [ ! -e ${SRC_DIR}/${SOURCE_FILE}.lock ] && [ ! -s ${SRC_DIR}/${SOURCE_FILE} ]
   touch ${SRC_DIR}/${SOURCE_FILE}.lock
   echo "seems like this is the first build - let's get the source"
   mkdir -p $SRC_DIR
-  wget http://downloads.sourceforge.net/project/numpy/NumPy/${VERSION}/${SOURCE_FILE} -O $SRC_DIR/$SOURCE_FILE
+  wget https://github.com/numpy/numpy/archive/${SOURCE_FILE} -O $SRC_DIR/$SOURCE_FILE
   echo "releasing lock"
   rm -v ${SRC_DIR}/${SOURCE_FILE}.lock
 elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
