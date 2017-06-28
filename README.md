@@ -6,8 +6,10 @@ Build and test scripts necessary to deploy Numpy.
 
 # Versions
 
-Support versions are : 
- 
+Support versions are :
+
   1. 1.9.1
   1. 1.10.1
   1. 1.11.0
+
+# Dependencies
