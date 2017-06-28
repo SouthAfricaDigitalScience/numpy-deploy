@@ -17,7 +17,7 @@ cd $WORKSPACE/$NAME-$VERSION
 #python${VERSION_MINOR} setup.py clean
 (
 cat <<SITECFG
-[DEFAULT]
+[default]
 library_dirs = ${OPENBLAS_DIR}/lib
 include_dirs = ${OPENBLAS_DIR}/include/
 ATLAS=none
@@ -25,7 +25,12 @@ BLAS=${OPENBLAS_DIR}/lib/libopenblas.so
 LAPACK=${OPENBLAS_DIR}/lib/libopenblas.so
 [openblas]
 libraries = openblas
-runtime_library_dirs = ${OPENBLAS_DIR}/lib/
+openblas_libs = openblas
+library_dirs = ${OPENBLAS_DIR}/lib/
+
+[lapack]
+lapack_libs = openblas
+library_dirs = ${OPENBLAS_DIR}/lib/
 
 [fft]
 libraries = fftw3

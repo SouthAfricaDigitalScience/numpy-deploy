@@ -41,7 +41,7 @@ tar -xz --keep-newer-files -f ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE}
 # so unfortunately, we have to generate site.cfg on the fly.
 (
 cat <<SITECFG
-[DEFAULT]
+[default]
 library_dirs = ${OPENBLAS_DIR}/lib
 include_dirs = ${OPENBLAS_DIR}/include/
 ATLAS=none
@@ -49,7 +49,12 @@ BLAS=${OPENBLAS_DIR}/lib/libopenblas.so
 LAPACK=${OPENBLAS_DIR}/lib/libopenblas.so
 [openblas]
 libraries = openblas
-runtime_library_dirs = ${OPENBLAS_DIR}/lib/
+openblas_libs = openblas
+library_dirs = ${OPENBLAS_DIR}/lib/
+
+[lapack]
+lapack_libs = openblas
+library_dirs = ${OPENBLAS_DIR}/lib/
 
 [fft]
 libraries = fftw3
