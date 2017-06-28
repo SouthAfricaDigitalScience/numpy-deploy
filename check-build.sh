@@ -39,8 +39,8 @@ setenv       NUMPY_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(A
 MODULE_FILE
 ) > modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
-mkdir -p $LIBRARIES_MODULES/$NAME
-cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES_MODULES/$NAME
+mkdir -p $LIBRARIES/$NAME
+cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES/$NAME
 echo "module inserted"
 echo "checking availability"
 module avail $NAME

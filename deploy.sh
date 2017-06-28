@@ -61,8 +61,8 @@ prepend-path PYTHONPATH          $::env(NUMPY_DIR)/lib/python${VERSION_MINOR}/si
 MODULE_FILE
 ) > modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
-mkdir -p $LIBRARIES_MODULES/$NAME
-cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES_MODULES/${NAME}
+mkdir -p $LIBRARIES/$NAME
+cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES/${NAME}
 
 ##  check the numpy module load
 
