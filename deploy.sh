@@ -6,6 +6,7 @@ module add deploy
 module add gcc/${GCC_VERSION}
 module add openblas/0.2.19-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-1.8.8
+
 module add python/${PYTHON_VERSION}-gcc-${GCC_VERSION}
 module add openssl/1.0.2j
 
@@ -40,7 +41,8 @@ SITECFG
 ) > site.cfg
 
 export LDFLAGS="$LDFLAGS -shared"
-python${VERSION_MAJOR} setup.py install
+python${VERSION_MAJOR} setup.py build
+python${VERSION_MAJOR} setup.py install  --prefix=${SOFT_DIR}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
 mkdir -p modules
 (
@@ -55,7 +57,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       NUMPY_VERSION       $VERSION
-setenv       NUMPY_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       NUMPY_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 prepend-path LD_LIBRARY_PATH     $::env(NUMPY_DIR)/lib
 prepend-path PYTHONPATH          $::env(NUMPY_DIR)/lib/python${VERSION_MINOR}/site-packages
 MODULE_FILE
@@ -63,8 +65,8 @@ MODULE_FILE
 
 mkdir -p $LIBRARIES/$NAME
 cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES/${NAME}
-module add  ${NAME}/${VERSION}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 ##  check the numpy module load
+module add  ${NAME}/${VERSION}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
 ## run numpy full test suite (needs nose)
 python${VERSION_MINOR} -c 'import numpy as np; print np.version.version ;'

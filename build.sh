@@ -69,4 +69,4 @@ export LDFLAGS="$LDFLAGS -shared"
 
 # Follow instructions at http://docs.scipy.org/doc/numpy-1.10.1/user/install.html#linux
 
-python${VERSION_MINOR} setup.py build_ext --inplace
+python${VERSION_MINOR} setup.py build

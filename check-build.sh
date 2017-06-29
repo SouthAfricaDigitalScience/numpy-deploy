@@ -18,7 +18,7 @@ cd $WORKSPACE/$NAME-$VERSION
 
 # export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
 export LDFLAGS="$LDFLAGS -shared"
-python${VERSION_MINOR} setup.py install
+python${VERSION_MINOR} setup.py install --prefix=${SOFT_DIR}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 echo "making module"
 mkdir -p modules
 (
@@ -33,7 +33,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       NUMPY_VERSION       $VERSION
-setenv       NUMPY_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       NUMPY_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 prepend-path LD_LIBRARY_PATH   $::env(NUMPY_DIR)/lib
 prepend-path PYTHONPATH       $::env(NUMPY_DIR)/lib/python${VERSION_MINOR}/site-packages
 MODULE_FILE
@@ -51,4 +51,4 @@ echo $PYTHONPATH
 echo "running test"
 ## run numpy full test suite (needs nose)
 cd /tmp
-python${VERSION_MINOR} -c 'import numpy as np; np.version.version'
+python${VERSION_MINOR} -c 'import numpy as np; np.version.version;'
