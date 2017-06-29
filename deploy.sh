@@ -63,8 +63,8 @@ MODULE_FILE
 
 mkdir -p $LIBRARIES/$NAME
 cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES/${NAME}
-
+module add  ${NAME}/${VERSION}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 ##  check the numpy module load
 
 ## run numpy full test suite (needs nose)
-python${VERSION_MINOR} -c 'import numpy; print numpy.version.version ;'
+python${VERSION_MINOR} -c 'import numpy as np; print np.version.version ;'
