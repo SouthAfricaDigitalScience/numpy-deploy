@@ -8,8 +8,14 @@ Build and test scripts necessary to deploy Numpy.
 
 Support versions are :
 
-  1. 1.9.1
+  1. ~1.9.1~
   1. 1.10.1
   1. 1.11.0
+  1. 1.13.0
 
 # Dependencies
+
+Numpy depends on
+
+  1. python (2.7)
+  2. lapack / blas
