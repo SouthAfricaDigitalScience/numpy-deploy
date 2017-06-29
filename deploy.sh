@@ -41,8 +41,6 @@ SITECFG
 ) > site.cfg
 
 export LDFLAGS="$LDFLAGS -shared"
-python${VERSION_MAJOR} setup.py build
-python${VERSION_MAJOR} setup.py install  --prefix=${SOFT_DIR}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
 mkdir -p modules
 (
@@ -67,6 +65,8 @@ mkdir -p $LIBRARIES/$NAME
 cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES/${NAME}
 ##  check the numpy module load
 module add  ${NAME}/${VERSION}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
+python${VERSION_MAJOR} setup.py build
+python${VERSION_MAJOR} setup.py install  --prefix=${SOFT_DIR}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
 ## run numpy full test suite (needs nose)
 python${VERSION_MINOR} -c 'import numpy as np; print np.version.version ;'
