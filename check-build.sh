@@ -18,7 +18,6 @@ cd $WORKSPACE/$NAME-$VERSION
 
 # export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
 export LDFLAGS="$LDFLAGS -shared"
-python${VERSION_MINOR} setup.py install --prefix=${SOFT_DIR}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 echo "making module"
 mkdir -p modules
 (
@@ -45,6 +44,8 @@ echo "module inserted"
 echo "checking availability"
 module avail $NAME
 module add ${NAME}/${VERSION}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
+python${VERSION_MINOR} setup.py install --prefix=${SOFT_DIR}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
+
 echo "how has pythonpath changed ?"
 echo $PYTHONPATH
 ##  check the numpy module load
