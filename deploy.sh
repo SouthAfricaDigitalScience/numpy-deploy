@@ -69,4 +69,5 @@ python${VERSION_MAJOR} setup.py build
 python${VERSION_MAJOR} setup.py install  --prefix=${SOFT_DIR}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
 ## run numpy full test suite (needs nose)
+cd /tmp
 python${VERSION_MINOR} -c 'import numpy as np; print np.version.version ;'
