@@ -14,10 +14,14 @@ export VERSION_MINOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
 echo $LD_LIBRARY_PATH
 echo ""
 cd $WORKSPACE/$NAME-$VERSION
+echo "what is the site.cfg?"
+cat site.cfg
 #python${VERSION_MINOR} setup.py test
+export LDFLAGS="$LDFLAGS -shared"
+python${VERSION_MINOR} setup.py install --prefix=${SOFT_DIR}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
 # export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
-export LDFLAGS="$LDFLAGS -shared"
+
 echo "making module"
 mkdir -p modules
 (
@@ -39,12 +43,12 @@ MODULE_FILE
 ) > modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
 mkdir -p $LIBRARIES/$NAME
+
 cp modules/$VERSION-python-${PYTHON_VERSION}-gcc-${GCC_VERSION} $LIBRARIES/$NAME
 echo "module inserted"
 echo "checking availability"
 module avail $NAME
 module add ${NAME}/${VERSION}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
-python${VERSION_MINOR} setup.py install --prefix=${SOFT_DIR}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
 
 echo "how has pythonpath changed ?"
 echo $PYTHONPATH
