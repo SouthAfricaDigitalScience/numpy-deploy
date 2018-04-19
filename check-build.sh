@@ -11,6 +11,7 @@ module add openssl/1.0.2j
 
 export VERSION_MAJOR=${PYTHON_VERSION:0:1} # Should be 2 or 3
 export VERSION_MINOR=${PYTHON_VERSION:0:3} # Should be 2.7 or 3.4 or similar
+echo "PYTHONPATH is ${PYTHONPATH}"
 echo $LD_LIBRARY_PATH
 echo ""
 cd $WORKSPACE/$NAME-$VERSION
@@ -18,7 +19,7 @@ echo "what is the site.cfg?"
 cat site.cfg
 #python${VERSION_MINOR} setup.py test
 export LDFLAGS="$LDFLAGS -shared"
-echo "PYTHONPATH is ${PYTHONPATH}"
+
 PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/  \
 python${VERSION_MINOR} setup.py install
 
