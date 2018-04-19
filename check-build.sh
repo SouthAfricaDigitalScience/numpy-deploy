@@ -18,9 +18,9 @@ echo "what is the site.cfg?"
 cat site.cfg
 #python${VERSION_MINOR} setup.py test
 export LDFLAGS="$LDFLAGS -shared"
-python${VERSION_MINOR} setup.py install --prefix=${SOFT_DIR}-python-${PYTHON_VERSION}-gcc-${GCC_VERSION}
-
-# export PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/
+echo "PYTHONPATH is ${PYTHONPATH}"
+PYTHONPATH=${SOFT_DIR}/lib/python${VERSION_MINOR}/site-packages/  \
+python${VERSION_MINOR} setup.py install
 
 echo "making module"
 mkdir -p modules
